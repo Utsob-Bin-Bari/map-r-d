@@ -1,21 +1,39 @@
 {
   "name": "map-integration-research-and-development",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "clean-android": "expo prebuild --clean --platform android",
+    "clean-ios": "expo prebuild --clean --platform ios",
+    "clean-prebuild": "expo prebuild --clean",
+    "prebuild": "expo prebuild",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "ios-release": "expo run:ios --configuration Release",
+    "android-release": "expo run:android --variant=release",
+    "open-xcode": "open ios/map-integration-research-and-development.xcworkspace",
+    "open-studio": "open android/app/build.gradle",
+    "web": "expo start --web",
+    "lint": "expo lint"
   },
   "dependencies": {
     "expo": "~54.0.33",
+    "expo-constants": "^18.0.13",
+    "expo-font": "^14.0.11",
+    "expo-linking": "^8.0.11",
+    "expo-location": "^19.0.8",
+    "expo-router": "~6.0.23",
     "expo-status-bar": "~3.0.9",
     "react": "19.1.0",
-    "react-native": "0.81.5"
+    "react-native": "0.81.5",
+    "react-native-maps": "1.20.1",
+    "react-native-safe-area-context": "^5.6.2",
+    "react-native-screens": "~4.16.0"
   },
   "devDependencies": {
     "@types/react": "~19.1.0",
+    "dotenv": "^17.2.3",
     "typescript": "~5.9.2"
   },
   "private": true

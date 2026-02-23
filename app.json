@@ -13,18 +13,60 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.utsob-bin-bari.map-integration-research-and-development",
+      "config": {
+        "googleMapsApiKey": ""
+      },
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "This app needs your location to show you on the map and provide directions.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "This app uses your location to track your position on the map in real time."
+      }
     },
     "android": {
+      "package": "com.utsobbinbari.mapintegrationresearchanddevelopment",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "config": {
+        "googleMaps": {
+          "apiKey": ""
+        }
+      },
+      "permissions": ["ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION"]
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "scheme": "map-integration",
+    "extra": {
+      "googleMapsApiKey": ""
+    },
+    "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/DMSans-Black.ttf",
+            "./assets/fonts/DMSans-Bold.ttf",
+            "./assets/fonts/DMSans-ExtraBold.ttf",
+            "./assets/fonts/DMSans-ExtraLight.ttf",
+            "./assets/fonts/DMSans-Light.ttf",
+            "./assets/fonts/DMSans-Medium.ttf",
+            "./assets/fonts/DMSans-Regular.ttf",
+            "./assets/fonts/DMSans-SemiBold.ttf",
+            "./assets/fonts/DMSans-Thin.ttf",
+            "./assets/fonts/CormorantGaramond-Bold.ttf",
+            "./assets/fonts/CormorantGaramond-SemiBold.ttf",
+            "./assets/fonts/CormorantGaramond-Medium.ttf",
+            "./assets/fonts/CormorantGaramond-Regular.ttf",
+            "./assets/fonts/CormorantGaramond-Light.ttf"
+          ]
+        }
+      ]
+    ]
   }
 }
