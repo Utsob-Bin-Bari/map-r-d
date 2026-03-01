@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
+import { useTheme } from "@/contexts/ThemeContext";
+import { TOGGLE_SPRING_CONFIG } from "@/styles/variables.style";
 import Animated, {
     useSharedValue,
     useAnimatedStyle,
     withSpring,
 } from "react-native-reanimated";
-import { useTheme } from "@/contexts/ThemeContext";
-import { TOGGLE_SPRING_CONFIG } from "@/styles/variables.style";
 
 
 type ToggleProps = {
@@ -14,21 +14,21 @@ type ToggleProps = {
     onChange: (value: boolean) => void;
 };
 
-const { CONTAINER_WIDTH, CIRCLE_SIZE, PADDING, stiffness, damping } = TOGGLE_SPRING_CONFIG;
+const { CONTAINER_HEIGHT, CONTAINER_WIDTH, CONTAINER_RADIUS, CIRCLE_SIZE, PADDING, stiffness, damping } = TOGGLE_SPRING_CONFIG;
 export const Toggle: React.FC<ToggleProps> = ({ value, onChange }) => {
-    const TRAVEL = CONTAINER_WIDTH - CIRCLE_SIZE - PADDING*2 -2;
+    const TRAVEL = CONTAINER_WIDTH - PADDING * 2 - CIRCLE_SIZE;
     const { theme } = useTheme();
-    const position = useSharedValue(value ? 1 : 0);
+    const position = useSharedValue(value ? 0 : 1);
 
     useEffect(() => {
-        position.value = withSpring(value ? 1 : 0, {stiffness, damping});
+        position.value = withSpring(value ? 0 : 1, {stiffness, damping});
     }, [value, position]);
 
     const backgroundColor = value ? theme.colors.toggleActiveBackground : theme.colors.toggleInactiveBackground;
     const circleBackgroundColor = theme.colors.toggleCircleBackground;
 
     const animatedCircleStyle = useAnimatedStyle(() => ({
-        transform: [{ translateX: PADDING + position.value * TRAVEL }],
+        transform: [{ translateX: (1 - position.value) * TRAVEL }],
     }));
 
     return (
@@ -50,9 +50,9 @@ export const Toggle: React.FC<ToggleProps> = ({ value, onChange }) => {
 
 const styles = StyleSheet.create({
     container: {
-        height: 19,
+        height: CONTAINER_HEIGHT,
         width: CONTAINER_WIDTH,
-        borderRadius: 16,
+        borderRadius: CONTAINER_RADIUS,
         justifyContent: "center",
         paddingLeft: PADDING,
     },

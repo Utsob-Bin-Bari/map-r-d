@@ -5,6 +5,7 @@ import { StyleSheet, TextInput, type TextInputProps, TouchableOpacity, View } fr
 import { GlobalTextStyles } from "../styles/global.text.style";
 import { useTheme } from '../contexts/ThemeContext';
 
+
 type InputProps = {
     label: string;
     placeholder: string;
@@ -15,24 +16,29 @@ type InputProps = {
     error?: string;
     enableEye?: boolean;
     height?: number;
-    backgroundColor?: string;
+    inputBackgroundColor?: string;
     borderOutlineColor?: string;
     maxLength?: number;
+    icon?: React.ReactNode;
+    onIconPress?: () => void;
+    borderRadius?: number;
 } & TextInputProps;
 
-export const Input: React.FC<InputProps> = ({ label, placeholder, value, onChangeText, required = false, supportingText = "", error = "", enableEye = false, height = 56, backgroundColor = 'transparent', borderOutlineColor = null, maxLength = 60, ...props }) => {
+export const Input: React.FC<InputProps> = ({ label, placeholder, value, onChangeText, required = false, supportingText = "", error = "", enableEye = false, height = 56, inputBackgroundColor = null, borderOutlineColor = null,icon = null, onIconPress = () => {}, maxLength = 60, borderRadius = null,     ...props }) => {
     const [hasEye, setHasEye] = useState<boolean>(true);
     const top = label.length > 0 ? 20 + height / 2 - 15 : height / 2 - 10 - 15;
     const { theme } = useTheme();
+    const backgroundColor = inputBackgroundColor ? inputBackgroundColor : theme.colors.inputBackground;
+    const inputBorderRadius = borderRadius!==null ? borderRadius : 8;
     return (
         <View style={styles.container}>
-            { label && <Text textThemeName="bodyBold">{label}{required && <Text textThemeName="bodyBold">*</Text>}</Text>}
+            { label && <Text textThemeName="bodyMedium" style={{color: theme.colors.textInputLabelColor}}>{label}{required && <Text textThemeName="bodyMedium" style={{color: theme.colors.textInputLabelColor}}>*</Text>}</Text>}
             <TextInput
                 placeholder={placeholder}
                 value={value}
                 onChangeText={onChangeText}
-                style={[{color: theme.colors.inputText, borderColor: borderOutlineColor ? borderOutlineColor : theme.colors.inputBorder}, GlobalTextStyles.bodyLight, styles.input, 
-                    {paddingRight: enableEye?40:16},{height: height, backgroundColor: backgroundColor}, ]}
+                style={[{color: theme.colors.inputText, borderColor: borderOutlineColor ? borderOutlineColor : theme.colors.inputBorder}, GlobalTextStyles.bodyRegular, styles.input, 
+                    {paddingRight: enableEye?40:16},{height: height, backgroundColor: backgroundColor, borderRadius: inputBorderRadius}, ]}
                 placeholderTextColor={theme.colors.inputPlaceholder}
                 selectionColor={theme.colors.inputText}
                 cursorColor={theme.colors.inputText}
@@ -45,9 +51,11 @@ export const Input: React.FC<InputProps> = ({ label, placeholder, value, onChang
             {enableEye && <TouchableOpacity onPress={() => setHasEye(!hasEye)} style={[styles.eyeIcon, {top: top, right: 5}]}>
                 <Ionicons name={hasEye ? 'eye-off' : 'eye'} size={20} color={theme.colors.inputBorder} />
             </TouchableOpacity>}
-
-            {supportingText && <Text textThemeName="bodyLight" style={{color: theme.colors.inputText}}>{supportingText}</Text>}
-            {error && <Text textThemeName="bodyLight" style={{color: theme.colors.error}}>{error}</Text>}
+            {icon && !enableEye && <TouchableOpacity onPress={onIconPress} style={[styles.eyeIcon, {top: top, right: 5}]}>
+                {icon}
+            </TouchableOpacity>}
+            {supportingText && <Text textThemeName="bodyRegular" style={{color: theme.colors.inputText}}>{supportingText}</Text>}
+            {error && <Text textThemeName="bodyRegular" style={{color: theme.colors.error}}>{error}</Text>}
         </View>
     );
 };

@@ -9,6 +9,8 @@ export const Colors = {
     primary700: "#8C7346",
     primary800: "#6C5936",
     primary900: "#53442A",
+    primaryInputPlaceholder: "#B5A18A",
+    primaryInputText: "#7C6446",
     secondary50: "#F8F7FC",
     secondary100: "#E9E6F5",
     secondary200: "#DEDAF0",
@@ -71,4 +73,5 @@ export const Colors = {
     dark700:"#121212",
     dark800:"#0E0E0E",
     dark900:"#0B0B0B",
+    backgroundLight:'#F5F1EC',
 }
