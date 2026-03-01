@@ -14,6 +14,9 @@ export interface Theme {
     primaryDark: string;
     border: string;
     buttonBorderColor: string;
+    toggleActiveBackground: string;
+    toggleInactiveBackground: string;
+    toggleCircleBackground: string;
     dotBorder: string;
     inputBorder: string;
     inputText: string;
@@ -61,6 +64,9 @@ export const darkTheme: Theme = {
     primary: '',
     primaryLight: '',
     primaryDark: '',
+    toggleActiveBackground: Colors.primary500,
+    toggleInactiveBackground: Colors.primary100,
+    toggleCircleBackground: Colors.primary50,
     dotBorder: Colors.primary200,
     buttonBorderColor: Colors.primary100,
     border:'',
