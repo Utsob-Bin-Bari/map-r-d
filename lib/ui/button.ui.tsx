@@ -61,9 +61,11 @@ export const Button: React.FC<ButtonProps> = ({
 			{isLoading ? (
 					<ActivityIndicator size={"small"} color={indicatorColor ?? theme.colors.buttonPrimaryText} />
 				) : (
-					<Text textThemeName={textThemeName as keyof typeof GlobalTextStyles} 
+					<>
+					{text && text.length > 0 && <Text textThemeName={textThemeName as keyof typeof GlobalTextStyles} 
 					   style={[{color: textColor ? textColor : buttonBackgroundColor==='transparent' ? theme.colors.buttonTransparentText : theme.colors.buttonPrimaryText, maxWidth: textWidthPercent}, textStyle]}
-					   ellipsizeMode="tail" numberOfLines={1}>{text}</Text>
+					   ellipsizeMode="tail" numberOfLines={1}>{text}</Text>}
+					</>
 			)}
 			{iconPosition === "right" && !isLoading && icon}
 		</>

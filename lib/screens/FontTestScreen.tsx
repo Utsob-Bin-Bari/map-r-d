@@ -5,7 +5,7 @@ import { useTheme } from '../contexts/ThemeContext';
 import { Toggle } from '../ui/toggle.ui';
 import { useState } from 'react';
 import CheckBox from '../ui/checkBox.ui';
-import Status from '../ui/Status.ui';
+import Status from '../ui/status.ui';
 import { Input } from '../ui/input.ui';
 import { Mail02Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react-native';
@@ -14,6 +14,9 @@ import { Tab } from '../ui/tab.ui';
 import { StepTracker } from '../ui/stepTracker.ui';
 import { ReviewCard } from '../ui/review.card.ui';
 import { TherapistInfoCard } from '../ui/therapistInfoCard.ui';
+import { CategoryCard } from '../ui/categoryCard.ui';
+import { ServiceCard } from '../ui/serviceCard.ui';
+import { SearchAndFilter } from '../ui/searchAndFilter.ui';
 
 export const FontTestScreen = () => {
     const { theme } = useTheme();
@@ -26,7 +29,7 @@ export const FontTestScreen = () => {
     const options = ['Tab 1', 'Tab 2', 'Tab 3'];
     return (
         <View style={[GlobalContainerStyles.wrapperFlexWithPaddingToHeader,{backgroundColor:'grey'}]}>
-            <Button text="Get Started" textThemeName="title2Cormorant" onPress={() => {}}/>
+            {/* <Button text="Get Started" textThemeName="title2Cormorant" onPress={() => {}}/>
             <View style={{height: 10}} />
             <Button text="Sign In" onPress={() => {}} buttonBackgroundColor='transparent'/>
             <View style={{flexDirection:'row', gap:10}}>
@@ -69,7 +72,7 @@ export const FontTestScreen = () => {
               <StepTracker activeStep={4} totalSteps={7} />
             </View>
             <View style={{marginTop: 10}} />
-            {/* <View style={{width: '80%', alignSelf:'center'}}>
+            <View style={{width: '80%', alignSelf:'center'}}>
                 <ReviewCard 
                  review="Exactly what my body needed after weeks of training. Professional, focused, and incredibly effective."
                  rating={4.1} name="Annette Black" date="01.01.2026"  />   
@@ -87,6 +90,14 @@ export const FontTestScreen = () => {
                 id="123" 
                 rating={4.5} 
                 isFavorite={true} />
+            <View style={{width:'90%', alignSelf:'center', marginTop: 10}}>
+                <ServiceCard id="123" title="Deep Tissue (Massage)" description="Relax and release muscle tension, relieve stress and tension" minimumDurtion={60} maximumDuration={90} minimumPrice={85} isFavorite={true} />
+            </View>
+            <View style={{marginTop: 10,width:160, alignSelf:'center'}} >
+                <CategoryCard title="Massage" description="Relax and release muscle tension"/>
+            </View>
+            <View style={{marginTop: 10}} />
+            <SearchAndFilter />
         </View>
     );
 };
