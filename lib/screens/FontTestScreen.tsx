@@ -13,6 +13,7 @@ import MapToggle from '../ui/maptoggle.ui';
 import { Tab } from '../ui/tab.ui';
 import { StepTracker } from '../ui/stepTracker.ui';
 import { ReviewCard } from '../ui/review.card.ui';
+import { TherapistInfoCard } from '../ui/therapistInfoCard.ui';
 
 export const FontTestScreen = () => {
     const { theme } = useTheme();
@@ -68,11 +69,24 @@ export const FontTestScreen = () => {
               <StepTracker activeStep={4} totalSteps={7} />
             </View>
             <View style={{marginTop: 10}} />
-            <View style={{width: '80%', alignSelf:'center'}}>
+            {/* <View style={{width: '80%', alignSelf:'center'}}>
                 <ReviewCard 
                  review="Exactly what my body needed after weeks of training. Professional, focused, and incredibly effective."
                  rating={4.1} name="Annette Black" date="01.01.2026"  />   
-            </View>
+            </View> */}
+            <View style={{marginTop: 10}} />
+            <TherapistInfoCard 
+                name="Sarah Johnson" 
+                services={['Deep Tissue, Sports Recovery']} 
+                experience={10} 
+                minimumBookingPrice={85} 
+                maximumBookingPrice={90} 
+                timeSlot="60min" 
+                distance={10} 
+                avaiableDays="Mon-Fri" 
+                id="123" 
+                rating={4.5} 
+                isFavorite={true} />
         </View>
     );
 };
