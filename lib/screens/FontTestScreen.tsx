@@ -7,7 +7,7 @@ import { useState } from 'react';
 import CheckBox from '../ui/checkBox.ui';
 import Status from '../ui/status.ui';
 import { Input } from '../ui/input.ui';
-import { Mail02Icon, StarIcon } from '@hugeicons/core-free-icons';
+import { Location01Icon, Mail02Icon, SecurityCheckIcon, StarIcon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react-native';
 import MapToggle from '../ui/maptoggle.ui';
 import { Tab } from '../ui/tab.ui';
@@ -19,6 +19,9 @@ import { ServiceCard } from '../ui/serviceCard.ui';
 import { SearchAndFilter } from '../ui/searchAndFilter.ui';
 import { Badge } from '../ui/badge.ui';
 import { Colors } from '../styles/colors.style';
+import { ProfileAcheivementCard } from '../ui/profileAcheivementCard.ui';
+import { ImageSection } from '../ui/imageSection.ui';
+import { IntroSection } from '@/ui/introSection.ui';
 
 export const FontTestScreen = () => {
     const { theme } = useTheme();
@@ -30,7 +33,7 @@ export const FontTestScreen = () => {
     const [activeTab, setActiveTab] = useState(0);
     const options = ['Tab 1', 'Tab 2', 'Tab 3'];
     return (
-        <View style={[GlobalContainerStyles.wrapperFlexWithPaddingToHeader,{backgroundColor:'grey'}]}>
+        <View style={[GlobalContainerStyles.wrapperFlexWithPaddingToHeader,{backgroundColor:'white'}]}>
             {/* <Button text="Get Started" textThemeName="title2Cormorant" onPress={() => {}}/>
             <View style={{height: 10}} />
             <Button text="Sign In" onPress={() => {}} buttonBackgroundColor='transparent'/>
@@ -79,8 +82,18 @@ export const FontTestScreen = () => {
                  review="Exactly what my body needed after weeks of training. Professional, focused, and incredibly effective."
                  rating={4.1} name="Annette Black" date="01.01.2026"  />   
             </View> */}
+            <ImageSection image="" isFavorite={true} favoriteOnPress={() => {}} />
             <View style={{marginTop: 10}} />
-            <TherapistInfoCard 
+            <IntroSection name="Sarah Mitchell" expertise={['Deep Tissue, Sports Recovery']} 
+               badges={[
+                {text: 'Verified', icon: <HugeiconsIcon icon={SecurityCheckIcon} size={16} strokeWidth={1.5} color={Colors.primary500} />},
+                {text: 'Top Rated', icon: <HugeiconsIcon icon={StarIcon} size={16} strokeWidth={1.5} color={Colors.primary500} />},
+                {text: 'Elite', icon: <HugeiconsIcon icon={Location01Icon} size={16} strokeWidth={1.5} color={Colors.primary500} />}
+            ]} 
+               id="123" 
+               isVerified={true} />
+            <View style={{marginTop: 30}} />
+            {/* <TherapistInfoCard 
                 name="Sarah Johnson" 
                 services={['Deep Tissue, Sports Recovery']} 
                 experience={10} 
@@ -95,13 +108,17 @@ export const FontTestScreen = () => {
             <View style={{width:'90%', alignSelf:'center', marginTop: 10}}>
                 <ServiceCard id="123" title="Deep Tissue (Massage)" description="Relax and release muscle tension, relieve stress and tension" minimumDurtion={60} maximumDuration={90} minimumPrice={85} isFavorite={true} />
             </View>
-            <View style={{marginTop: 10,width:160, alignSelf:'center'}} >
+            <View style={{marginTop: 10}} /> */}
+            <ProfileAcheivementCard totalClients={200} experienceYears={12} rating={4.8} ratingCount={150} />
+            {/* <View style={{marginTop: 10,width:160, alignSelf:'center'}} >
                 <CategoryCard title="Massage" description="Relax and release muscle tension"/>
             </View>
             <View style={{marginTop: 10}} />
             <SearchAndFilter />
             <View style={{marginTop: 10}} />
             <Badge text="Top Rated" icon={<HugeiconsIcon icon={StarIcon} size={16} strokeWidth={1.5} color={Colors.primary500} />} />
+            <View style={{marginTop: 10}} /> */}
+
         </View>
     );
 };

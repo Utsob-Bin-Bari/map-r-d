@@ -2,7 +2,7 @@ import { View, StyleSheet } from 'react-native';
 import { Text } from './text.ui';
 import { Colors } from '@/styles/colors.style';
 
-type BadgeProps = {
+export type BadgeProps = {
     text: string;
     icon: React.ReactNode;
 }
