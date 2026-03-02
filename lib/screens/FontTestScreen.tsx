@@ -7,7 +7,7 @@ import { useState } from 'react';
 import CheckBox from '../ui/checkBox.ui';
 import Status from '../ui/status.ui';
 import { Input } from '../ui/input.ui';
-import { Mail02Icon } from '@hugeicons/core-free-icons';
+import { Mail02Icon, StarIcon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react-native';
 import MapToggle from '../ui/maptoggle.ui';
 import { Tab } from '../ui/tab.ui';
@@ -17,6 +17,8 @@ import { TherapistInfoCard } from '../ui/therapistInfoCard.ui';
 import { CategoryCard } from '../ui/categoryCard.ui';
 import { ServiceCard } from '../ui/serviceCard.ui';
 import { SearchAndFilter } from '../ui/searchAndFilter.ui';
+import { Badge } from '../ui/badge.ui';
+import { Colors } from '../styles/colors.style';
 
 export const FontTestScreen = () => {
     const { theme } = useTheme();
@@ -98,6 +100,8 @@ export const FontTestScreen = () => {
             </View>
             <View style={{marginTop: 10}} />
             <SearchAndFilter />
+            <View style={{marginTop: 10}} />
+            <Badge text="Top Rated" icon={<HugeiconsIcon icon={StarIcon} size={16} strokeWidth={1.5} color={Colors.primary500} />} />
         </View>
     );
 };
