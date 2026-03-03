@@ -20,7 +20,7 @@ export const IntroSection = ({ name, expertise, badges, id, isVerified }: IntroS
             <View style={styles.nameContainer}>
                 <View style={styles.nameIconContainer}>
                    <Text textThemeName="h5Cormorant" style={{color: Colors.primaryInputText}} numberOfLines={1}>{name}</Text>
-                   <HugeiconsIcon icon={SecurityCheckIcon} size={18} strokeWidth={2} color={Colors.primary500} />
+                   {isVerified && <HugeiconsIcon icon={SecurityCheckIcon} size={18} strokeWidth={2} color={Colors.primary500} />}
                 </View>
                 <View style={styles.expertiseContainer}>
                     <Text textThemeName="bodyRegular" style={{color: Colors.primaryInputText}} numberOfLines={1}>{expertise.join(', ')}</Text>
@@ -34,12 +34,12 @@ export const IntroSection = ({ name, expertise, badges, id, isVerified }: IntroS
             <View style={styles.buttonContainer}>
                 <Button 
                    text="" 
-                   icon={<HugeiconsIcon icon={BubbleChatIcon} size={24} strokeWidth={1.5} color={Colors.white} fill={Colors.primary500} />} 
+                   icon={<HugeiconsIcon icon={BubbleChatIcon} size={24} strokeWidth={1.5} color={Colors.backgroundLight} fill={Colors.primary500} />} 
                    onPress={() => {}} 
                    textColor={Colors.primary500}
                    width={48}
                    height={48}
-                   borderRadius={16}
+                   borderRadius={12}
                    buttonBackgroundColor={'transparent'}
                 />
             </View>
@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
         height:80,
         width:48,
         alignItems: 'flex-end',
+        paddingTop:10,
     },
     nameIconContainer: {
         flexDirection: 'row',

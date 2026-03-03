@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { Dimensions, View, ScrollView} from 'react-native';
 import { Button } from '../ui/button.ui';
 import { useGlobalContainerStyles } from '../styles/global.container.style';
 import { useTheme } from '../contexts/ThemeContext';
@@ -7,7 +7,7 @@ import { useState } from 'react';
 import CheckBox from '../ui/checkBox.ui';
 import Status from '../ui/status.ui';
 import { Input } from '../ui/input.ui';
-import { Location01Icon, Mail02Icon, SecurityCheckIcon, StarIcon } from '@hugeicons/core-free-icons';
+import { Diamond02Icon, SecurityCheckIcon, StarIcon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react-native';
 import MapToggle from '../ui/maptoggle.ui';
 import { Tab } from '../ui/tab.ui';
@@ -22,103 +22,43 @@ import { Colors } from '../styles/colors.style';
 import { ProfileAcheivementCard } from '../ui/profileAcheivementCard.ui';
 import { ImageSection } from '../ui/imageSection.ui';
 import { IntroSection } from '@/ui/introSection.ui';
+import { About } from '../components/About.component';
+import { Services } from '../components/Services.component';
+import { Text } from '../ui/text.ui';
 
-export const FontTestScreen = () => {
+export const FontTestScreen = ({ minimumBookingPrice=85, maximumBookingPrice=90, timeSlot=60 }: { minimumBookingPrice: number, maximumBookingPrice: number, timeSlot: number}) => {
     const { theme } = useTheme();
     const GlobalContainerStyles = useGlobalContainerStyles(theme);
-    const [toggleValue, setToggleValue] = useState(false);
-    const [checkBoxValue, setCheckBoxValue] = useState(false);
-    const [name, setName] = useState('');
-    const [mapToggleValue, setMapToggleValue] = useState(false);
     const [activeTab, setActiveTab] = useState(0);
-    const options = ['Tab 1', 'Tab 2', 'Tab 3'];
+    const options = ['About', 'Services','Availability', 'Reviews'];
+    const buttonWidth = Dimensions.get('window').width * 0.9;
     return (
-        <View style={[GlobalContainerStyles.wrapperFlexWithPaddingToHeader,{backgroundColor:'white'}]}>
-            {/* <Button text="Get Started" textThemeName="title2Cormorant" onPress={() => {}}/>
-            <View style={{height: 10}} />
-            <Button text="Sign In" onPress={() => {}} buttonBackgroundColor='transparent'/>
-            <View style={{flexDirection:'row', gap:10}}>
-                <View>
-                    <View style={{height: 10}} />
-                    <Toggle value={toggleValue} onChange={setToggleValue} />
-                    <View style={{height: 10}} />
-                    <CheckBox checked={checkBoxValue} onPress={() => setCheckBoxValue(!checkBoxValue)} />
-                    <View style={{marginTop: 10}} />
-                    <MapToggle value={mapToggleValue} onChange={setMapToggleValue} />
-                </View>
-                <View>
-                <View style={{height: 10}} />
-                    <Status status="In Progress" />
-                    <View style={{height: 10}} />
-                    <Status status="Confirmed" />
-                    <View style={{height: 10}} />
-                    <Status status="Completed" />
-                </View>
-            </View>
-            <View style={{marginTop:10, width:'80%', alignSelf:'center'}}>
-                <Input supportingText="Enter your full name on id" label="Name" placeholder="Enter your name" value={name} onChangeText={setName} required />
-            </View>
-
-            <View style={{marginTop: 10, width:'80%', alignSelf:'center'}}>
-                <Input 
-                  label=""
-                  icon={<HugeiconsIcon icon={Mail02Icon} size={20} strokeWidth={1.5} color={theme.colors.inputText}/>} 
-                  onIconPress={() => {}} 
-                  placeholder="Enter your Email" 
-                  value={name} 
-                  onChangeText={setName} required 
-                  error="Name is required" 
-                  borderRadius={0}/>
-            </View>
-            <View style={{marginTop: 10}} />
-            <Tab options={options} activeOption={options[activeTab]} onSelect={(option) => setActiveTab(options.indexOf(option))} />
-            <View style={{marginTop: 10}} />
-            <View style={{width: '80%', alignSelf:'center'}}>
-              <StepTracker activeStep={4} totalSteps={7} />
-            </View>
-            <View style={{marginTop: 10}} />
-            <View style={{width: '80%', alignSelf:'center'}}>
-                <ReviewCard 
-                 review="Exactly what my body needed after weeks of training. Professional, focused, and incredibly effective."
-                 rating={4.1} name="Annette Black" date="01.01.2026"  />   
-            </View> */}
+        <View style={[GlobalContainerStyles.wrapperFlexWithPaddingToHeader,{backgroundColor:'#F5F1EC'}]}>
+            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{paddingBottom: 20, alignItems:'center'}}>
             <ImageSection image="" isFavorite={true} favoriteOnPress={() => {}} />
             <View style={{marginTop: 10}} />
             <IntroSection name="Sarah Mitchell" expertise={['Deep Tissue, Sports Recovery']} 
                badges={[
-                {text: 'Verified', icon: <HugeiconsIcon icon={SecurityCheckIcon} size={16} strokeWidth={1.5} color={Colors.primary500} />},
-                {text: 'Top Rated', icon: <HugeiconsIcon icon={StarIcon} size={16} strokeWidth={1.5} color={Colors.primary500} />},
-                {text: 'Elite', icon: <HugeiconsIcon icon={Location01Icon} size={16} strokeWidth={1.5} color={Colors.primary500} />}
+                {text: 'Verified', icon: <HugeiconsIcon icon={SecurityCheckIcon} size={12} strokeWidth={2} color={Colors.primary500} />},
+                {text: 'Top Rated', icon: <HugeiconsIcon icon={StarIcon} size={12} strokeWidth={2} color={Colors.primary500} />},
+                {text: 'Elite', icon: <HugeiconsIcon icon={Diamond02Icon} size={12} strokeWidth={2} color={Colors.primary500} />}
             ]} 
                id="123" 
                isVerified={true} />
-            <View style={{marginTop: 30}} />
-            {/* <TherapistInfoCard 
-                name="Sarah Johnson" 
-                services={['Deep Tissue, Sports Recovery']} 
-                experience={10} 
-                minimumBookingPrice={85} 
-                maximumBookingPrice={90} 
-                timeSlot="60min" 
-                distance={10} 
-                avaiableDays="Mon-Fri" 
-                id="123" 
-                rating={4.5} 
-                isFavorite={true} />
-            <View style={{width:'90%', alignSelf:'center', marginTop: 10}}>
-                <ServiceCard id="123" title="Deep Tissue (Massage)" description="Relax and release muscle tension, relieve stress and tension" minimumDurtion={60} maximumDuration={90} minimumPrice={85} isFavorite={true} />
-            </View>
-            <View style={{marginTop: 10}} /> */}
+            <View style={{marginTop: 20}} />
             <ProfileAcheivementCard totalClients={200} experienceYears={12} rating={4.8} ratingCount={150} />
-            {/* <View style={{marginTop: 10,width:160, alignSelf:'center'}} >
-                <CategoryCard title="Massage" description="Relax and release muscle tension"/>
+            <View style={{width:"100%",paddingVertical: 20,borderBottomWidth: 1, borderBottomColor: Colors.primary100}}>
+                <View style={{width:'90%',alignSelf:'center'}}>
+                  <Text textThemeName="h5SemiBold" style={{color:Colors.primaryInputText}}>£{minimumBookingPrice} - £{maximumBookingPrice}<Text textThemeName="bodyRegular" style={{color:Colors.primaryInputText}}> / {timeSlot}min</Text></Text>
+                </View>
             </View>
-            <View style={{marginTop: 10}} />
-            <SearchAndFilter />
-            <View style={{marginTop: 10}} />
-            <Badge text="Top Rated" icon={<HugeiconsIcon icon={StarIcon} size={16} strokeWidth={1.5} color={Colors.primary500} />} />
-            <View style={{marginTop: 10}} /> */}
-
+            <View style={{marginVertical: 10, width:'100%', alignSelf:'center'}}>
+                <Tab options={options} activeOption={options[activeTab]} onSelect={(option) => setActiveTab(options.indexOf(option))} />
+                {activeTab === 0 && <About />}
+                {activeTab === 1 && <Services />}
+            </View>
+            <Button text="Book" onPress={() => {}} width={buttonWidth}/>
+            </ScrollView>
         </View>
     );
 };

@@ -24,7 +24,7 @@ export const Tab = ({ options, activeOption, onSelect }: TabProps) => {
                             isActive && { borderBottomColor: theme.colors.tabActive },
                         ]}
                     >
-                        <Text textThemeName="captionMedium" style={{color: isActive ? theme.colors.tabActive : theme.colors.tabInactive}}>{option}</Text>
+                        <Text textThemeName="captionMedium" style={{color: isActive ? theme.colors.tabActive : theme.colors.tabInactive, lineHeight:15}}>{option}</Text>
                     </TouchableOpacity>
                 );
             })}
@@ -36,14 +36,14 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: "row",
         height:32,
-        width: "100%",
+        width: "90%",
+        alignSelf:'center',
     },
     tab: {
         flex: 1,
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        paddingHorizontal: 16,
         paddingVertical: 8,
     },
     activeOption: {

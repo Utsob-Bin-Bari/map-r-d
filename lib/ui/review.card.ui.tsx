@@ -1,4 +1,4 @@
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image, Dimensions } from "react-native";
 import { Text } from "./text.ui";
 import { useTheme } from "@/contexts/ThemeContext";
 import { Colors } from "@/styles/colors.style";
@@ -7,12 +7,13 @@ import { HugeiconsIcon } from '@hugeicons/react-native';
 
 const girlImage = require('../../assets/girl.jpg');
 
-interface ReviewCardProps {
+export type ReviewCardProps = {
     review: string;
     rating: number;
     name: string;
     date: string;
     image?: string;
+    id:string;
 }
 
 const STAR_COUNT = 5;
@@ -58,18 +59,21 @@ export const ReviewCard = ({ review, rating, name, date, image }: ReviewCardProp
     )
 }
 
+const width = Dimensions.get('window').width * 0.9;
+
 const styles = StyleSheet.create({
     container: {
-        width:'100%',
+        width:width,
         maxHeight:250,
         backgroundColor: Colors.primary50,
         borderRadius: 16,
         padding: 12,
-        elevation: 5,
+        elevation: 15,
         shadowColor: Colors.primary500,
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
+        marginBottom: 5,
     },
     headerContainer:{
         flexDirection: 'row',
