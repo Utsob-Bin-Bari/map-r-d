@@ -30,8 +30,8 @@ export const SignUpScreen = () => {
                 <Tab options={options} activeOption={options[activeTab]} onSelect={(option) => setActiveTab(options.indexOf(option))} />
                 <View style={{width:'100%',paddingBottom:20}}>
                     <View style={{flexDirection:'row',gap:5,alignItems:'center',alignSelf:'center'}}>  
-                    <Text textThemeName="bodyRegular" style={{color:Colors.primaryInputText}}>Already have an account?</Text>
-                    <Text textThemeName="title2Cormorant" style={{color:Colors.primary500,textDecorationLine:'underline'}}>Sign In</Text>
+                        <Text textThemeName="bodyRegular" style={{color:Colors.primaryInputText}}>Already have an account?</Text>
+                        <Text textThemeName="title2Cormorant" style={{color:Colors.primary500,textDecorationLine:'underline'}}>Sign In</Text>
                     </View>
                 </View>
             </ScrollView>
