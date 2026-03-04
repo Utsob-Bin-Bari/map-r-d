@@ -59,7 +59,7 @@ export const ReviewCard = ({ review, rating, name, date, image }: ReviewCardProp
     )
 }
 
-const width = Dimensions.get('window').width * 0.9;
+const width = Dimensions.get('window').width * 0.91;
 
 const styles = StyleSheet.create({
     container: {

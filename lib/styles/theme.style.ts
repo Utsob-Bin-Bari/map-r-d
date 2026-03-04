@@ -74,8 +74,8 @@ export interface Theme {
 
 export const darkTheme: Theme = {
   colors: {
-    background: Colors.primary900,  
-    authBackground: '',
+    background: Colors.backgroundLight,  
+    authBackground: Colors.primary50,
     surface: '',
     surfaceSecondary: '',
     text: '',

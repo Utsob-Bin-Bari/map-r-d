@@ -1,5 +1,5 @@
 {
-  "name": "map-integration-research-and-development",
+  "name": "connected",
   "version": "1.0.0",
   "main": "expo-router/entry",
   "scripts": {
@@ -12,7 +12,7 @@
     "ios": "expo run:ios",
     "ios-release": "expo run:ios --configuration Release",
     "android-release": "expo run:android --variant=release",
-    "open-xcode": "open ios/map-integration-research-and-development.xcworkspace",
+    "open-xcode": "open ios/connected.xcworkspace",
     "open-studio": "open android/app/build.gradle",
     "web": "expo start --web",
     "lint": "expo lint"
@@ -44,6 +44,7 @@
   "devDependencies": {
     "@types/react": "~19.1.0",
     "dotenv": "^17.2.3",
+    "react-native-svg-transformer": "^1.5.3",
     "typescript": "~5.9.2"
   },
   "private": true

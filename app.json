@@ -1,20 +1,20 @@
 {
   "expo": {
-    "name": "map-integration-research-and-development",
-    "slug": "map-integration-research-and-development",
+    "name": "connected",
+    "slug": "connected",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#53442A"
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.utsob-bin-bari.map-integration-research-and-development",
+      "bundleIdentifier": "com.connected.app",
       "config": {
         "googleMapsApiKey": ""
       },
@@ -24,10 +24,10 @@
       }
     },
     "android": {
-      "package": "com.utsobbinbari.mapintegrationresearchanddevelopment",
+      "package": "com.connected.app",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#53442A"
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,

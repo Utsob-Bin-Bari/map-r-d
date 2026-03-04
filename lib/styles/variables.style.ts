@@ -12,5 +12,5 @@ export const TOGGLE_SPRING_CONFIG = {
 
 export const NATIVE_SAFE_AREA_INSETS = {
     getPaddingTop: (insets: EdgeInsets) => insets.top,
-    width: "95%" as const,
+    width: "90%" as const,
 };
