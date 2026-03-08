@@ -1,4 +1,4 @@
-import { MapScreen } from '../lib/screens/MapScreen';
+import { MapScreen } from "@/screens";
 
 export default function MapRoute() {
   return <MapScreen />;

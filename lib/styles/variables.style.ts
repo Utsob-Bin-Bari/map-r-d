@@ -12,5 +12,10 @@ export const TOGGLE_SPRING_CONFIG = {
 
 export const NATIVE_SAFE_AREA_INSETS = {
     getPaddingTop: (insets: EdgeInsets) => insets.top,
+    getPaddingBottom: (insets: EdgeInsets) => insets.bottom,
     width: "90%" as const,
+};
+
+export const KEYBOARD_AVOIDING_VIEW = {
+    keyboardVerticalOffset: 38,
 };

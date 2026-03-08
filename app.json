@@ -14,7 +14,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.connected.app",
+      "bundleIdentifier": "com.connected.tulip.tech.app",
       "config": {
         "googleMapsApiKey": ""
       },
@@ -24,7 +24,7 @@
       }
     },
     "android": {
-      "package": "com.connected.app",
+      "package": "com.connected.tulip.tech.app",
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#53442A"

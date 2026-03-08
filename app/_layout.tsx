@@ -7,8 +7,8 @@ export default function RootLayout() {
     <Providers>
       <StatusBar style="dark" />
       <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="index" />
-        <Stack.Screen name="map" />
+        <Stack.Screen name="(auth)" />
+        <Stack.Screen name="(app)" />
         <Stack.Screen name="font-test" />
       </Stack>
     </Providers>

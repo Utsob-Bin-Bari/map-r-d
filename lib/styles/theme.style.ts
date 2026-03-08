@@ -23,9 +23,12 @@ export interface Theme {
     checkBoxIconColor: string;
     dotBorder: string;
     inputBorder: string;
+    inputIconColor: string;
     inputText: string;
     inputPlaceholder: string;
     inputBackground: string;
+    otpInputBorder: string;
+    otpInputBackground: string;
     buttonBackground: string;
     buttonPrimaryText: string;
     buttonSecondaryText: string;
@@ -96,8 +99,12 @@ export const darkTheme: Theme = {
     border:'',
     inputBorder: Colors.primary100,
     inputText: Colors.primaryInputText,
+    inputIconColor: Colors.primaryInputPlaceholder,
     inputPlaceholder: Colors.primaryInputPlaceholder,
     inputBackground: Colors.primary50,
+    otpInputBorder: Colors.primary100,
+    otpInputBackground: Colors.white,
+
     
     buttonBackground: '',
     buttonPrimaryText: Colors.white,

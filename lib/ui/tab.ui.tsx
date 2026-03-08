@@ -20,11 +20,11 @@ export const Tab = ({ options, activeOption, onSelect }: TabProps) => {
                         onPress={() => onSelect(option)}
                         style={[
                             styles.tab,
-                            isActive ? styles.activeOption : styles.inactiveOption,
-                            isActive && { borderBottomColor: theme.colors.tabActive },
+                            styles.borderBottom,
+                            { borderBottomColor: isActive ? theme.colors.tabActive : theme.colors.authBackground },
                         ]}
                     >
-                        <Text textThemeName="captionMedium" style={{color: isActive ? theme.colors.tabActive : theme.colors.tabInactive, lineHeight:15}}>{option}</Text>
+                        <Text textThemeName="title2Regular" style={{color: isActive ? theme.colors.tabActive : theme.colors.tabInactive}}>{option}</Text>
                     </TouchableOpacity>
                 );
             })}
@@ -35,7 +35,7 @@ export const Tab = ({ options, activeOption, onSelect }: TabProps) => {
 const styles = StyleSheet.create({
     container: {
         flexDirection: "row",
-        height:32,
+        height:34,
         width: "90%",
         alignSelf:'center',
     },
@@ -44,10 +44,8 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        paddingVertical: 8,
     },
-    activeOption: {
+    borderBottom: {
         borderBottomWidth: 2,
-    },
-    inactiveOption: {},
+    }
 });

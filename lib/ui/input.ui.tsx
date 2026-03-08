@@ -4,6 +4,9 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { StyleSheet, TextInput, type TextInputProps, TouchableOpacity, View } from "react-native";
 import { GlobalTextStyles } from "../styles/global.text.style";
 import { useTheme } from '../contexts/ThemeContext';
+import { Colors } from '@/styles/colors.style';
+import { HugeiconsIcon } from '@hugeicons/react-native';
+import { ViewOffSlashIcon, ViewIcon } from '@hugeicons/core-free-icons';
 
 
 type InputProps = {
@@ -23,11 +26,15 @@ type InputProps = {
     onIconPress?: () => void;
     borderRadius?: number;
     iconPosition?: "left" | "right";
+    paddingBottom?: number;
+    borderBottomWidth?: number;
+    borderBottomColor?: string;
 } & TextInputProps;
 
-export const Input: React.FC<InputProps> = ({ label, placeholder, value, onChangeText, required = false, supportingText = "", error = "", enableEye = false, height = 56, inputBackgroundColor = null, borderOutlineColor = null,icon = null, onIconPress = () => {}, maxLength = 60, borderRadius = null, iconPosition = "right",     ...props }) => {
+export const Input: React.FC<InputProps> = ({ label, placeholder, value, onChangeText, required = false, supportingText = "", error = "", enableEye = false, height = 56, inputBackgroundColor = null, borderOutlineColor = null,icon = null, onIconPress = () => {}, maxLength = 60, borderRadius = null, iconPosition = "right", paddingBottom = 15, borderBottomWidth = 0, borderBottomColor = null, ...props }) => {
     const [hasEye, setHasEye] = useState<boolean>(true);
-    const top = label.length > 0 ? 20 + height / 2 - 15 : height / 2 - 10 - 15;
+    const borderBottomWidthValue = borderBottomWidth ? borderBottomWidth : 0;
+    const borderBottomColorValue = borderBottomColor ? borderBottomColor : Colors.primary100;
     const { theme } = useTheme();
     const backgroundColor = inputBackgroundColor ? inputBackgroundColor : theme.colors.inputBackground;
     const inputBorderRadius = borderRadius!==null ? borderRadius : 8;
@@ -36,7 +43,7 @@ export const Input: React.FC<InputProps> = ({ label, placeholder, value, onChang
     const paddingVertical = height <= 48 ? 10 : 16;
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, {paddingBottom: paddingBottom, borderBottomWidth: borderBottomWidthValue, borderBottomColor: borderBottomColorValue}]}>
             { label && <Text textThemeName="bodyMedium" style={{color: theme.colors.textInputLabelColor}}>{label}{required && <Text textThemeName="bodyMedium" style={{color: theme.colors.textInputLabelColor}}>*</Text>}</Text>}
             <View style={[styles.inputRow, { height, backgroundColor, borderRadius: inputBorderRadius, borderColor: borderOutlineColor ?? theme.colors.inputBorder }]}>
                 {isLeftIcon && (
@@ -58,7 +65,7 @@ export const Input: React.FC<InputProps> = ({ label, placeholder, value, onChang
                             color: theme.colors.inputText,
                             borderColor: borderOutlineColor ?? theme.colors.inputBorder,
                             paddingLeft: isLeftIcon ? 4 : 16,
-                            paddingRight: enableEye ? 40 : 16,
+                            paddingRight: (enableEye || isRightIcon) ? 4 : 16,
                             paddingVertical,
                         },
                     ]}
@@ -72,12 +79,12 @@ export const Input: React.FC<InputProps> = ({ label, placeholder, value, onChang
                     numberOfLines={1}
                 />
                 {enableEye && (
-                    <TouchableOpacity onPress={() => setHasEye(!hasEye)} style={[styles.eyeIcon, { top: top, right: 5 }]}>
-                        <Ionicons name={hasEye ? 'eye-off' : 'eye'} size={20} color={theme.colors.inputBorder} />
+                    <TouchableOpacity onPress={() => setHasEye(!hasEye)} style={styles.rightIcon}>
+                        <HugeiconsIcon icon={hasEye ? ViewOffSlashIcon : ViewIcon} size={16} strokeWidth={1.5} color={theme.colors.inputIconColor} />
                     </TouchableOpacity>
                 )}
                 {isRightIcon && (
-                    <TouchableOpacity onPress={onIconPress} style={[styles.eyeIcon, { top: top, right: 5 }]}>
+                    <TouchableOpacity onPress={onIconPress} style={styles.rightIcon}>
                         {icon}
                     </TouchableOpacity>
                 )}
@@ -92,8 +99,7 @@ const styles = StyleSheet.create({
     container: {
         width: "100%",
         height: 'auto',
-        gap: 10,
-        paddingBottom: 15,
+        gap: 10,    
     },
     inputRow: {
         flexDirection: 'row',
@@ -113,13 +119,10 @@ const styles = StyleSheet.create({
         paddingLeft: 16,
         includeFontPadding: false,
     },
-    eyeIcon: {
-        position: "absolute",
-        right: 5,
-        height: 50,
-        width: 50,
-        borderRadius: 25,
+    rightIcon: {
+        paddingHorizontal: 12,
         justifyContent: 'center',
         alignItems: 'center',
+        height: '100%',
     },
 }); 

@@ -81,6 +81,7 @@ export const Button: React.FC<ButtonProps> = ({
 					buttonStyles,
 					{
 						opacity: props.disabled ? 0.5 : 1,
+						overflow: 'hidden',
 					},
 					style,
 				]}
@@ -89,7 +90,7 @@ export const Button: React.FC<ButtonProps> = ({
 					start={{x: 0, y: 0}}
 					end={{x: 1, y: 1}}
 					colors={[gradientTopLeftColor, gradientBottomRightColor]}
-					style={[styles.linearGradient, linearGradientStyles,{borderRadius: borderRadius != null ? borderRadius : 16}]}
+					style={[styles.linearGradient, linearGradientStyles,{borderRadius:0}]}
 				>
 					{buttonContent}
 				</LinearGradient>
@@ -128,6 +129,7 @@ const styles = StyleSheet.create({
 		textAlign: "center",
 		gap: 10,
 		borderWidth: 2,
+		zIndex: 15,
 	},
 	linearGradient: {
 		width:buttonWidth-4,
