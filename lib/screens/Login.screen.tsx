@@ -22,9 +22,9 @@ export const LoginScreen = () => {
   const router = useRouter();
   const { theme } = useTheme();
   const GlobalContainerStyles = useGlobalContainerStyles(theme);
-  const screenWidth = Dimensions.get("window").width;
-  const buttonWidth = screenWidth * 0.9-24;
-  const socialButtonWidth = (screenWidth * 0.9)/2-10-8;
+  const { width: screenWidth, height: screenHeight } = Dimensions.get("window");
+  const buttonWidth = (screenWidth * 0.9 * .98) - 24 ;
+  const socialButtonWidth = ((screenWidth * 0.9 * .98)/2)-10-12;
   const options = ["Customer", "Therapist"];
   const [activeTab, setActiveTab] = useState(0);
   const [rememberMe, setRememberMe] = useState(false);
@@ -45,7 +45,7 @@ export const LoginScreen = () => {
   return (
     <View style={GlobalContainerStyles.wrapperFlexWithPaddingToHeader}>
       <View pointerEvents="none" style={styles.topDesign}>
-        <TopDesign width={screenWidth} />
+        <TopDesign width={screenWidth} height={screenHeight * 0.14} preserveAspectRatio="none" />
       </View>
       <KeyboardAvoidingComponent>
       <View style={{ alignItems: "center" }}>
@@ -64,7 +64,9 @@ export const LoginScreen = () => {
               <Text textThemeName="bodyCormorant" style={{ color: Colors.primary500}}>Forgot Password?</Text>
             </TouchableOpacity>
           </View>
-          <Button text="Sign In" onPress={handleSignIn} width={buttonWidth}/>
+          <View style={{width:'100%', alignItems:'center'}}>
+            <Button text="Sign In" onPress={handleSignIn} width={buttonWidth}/>
+          </View>
           <View style={styles.orContainer}>
             <View style={styles.divider}/>
             <Text textThemeName="bodyRegular" style={{ color: Colors.primary500 }}>Or continue with</Text>
@@ -84,7 +86,7 @@ export const LoginScreen = () => {
       </View>
       </KeyboardAvoidingComponent>
       <View pointerEvents="none" style={styles.bottomDesign}>
-        <BottomDesign width={screenWidth} />
+        <BottomDesign width={screenWidth} height={screenHeight * 0.19} preserveAspectRatio="none" />
       </View>
     </View>
   );
@@ -95,11 +97,13 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     left: 0,
+    right: 0,
   },
   bottomDesign: {
     position: "absolute",
-    bottom: 80,
+    bottom: 0,
     left: 0,
+    right: 0,
   },
   inputContainer: {
     width: '98%',

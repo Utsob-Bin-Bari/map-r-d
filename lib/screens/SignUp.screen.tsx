@@ -23,8 +23,8 @@ export const SignUpScreen = () => {
     const { theme } = useTheme();
     const insets = useSafeAreaInsets();
     const GlobalContainerStyles = useGlobalContainerStyles(theme);
-    const screenWidth = Dimensions.get('window').width;
-    const buttonWidth = screenWidth * 0.9-24;
+    const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
+    const buttonWidth = (screenWidth * 0.9 * .98) - 24 ;
     const options = ['Customer', 'Therapists'];
     const [activeTab, setActiveTab] = useState(0);
     const [firstName, setFirstName] = useState('');
@@ -50,10 +50,10 @@ export const SignUpScreen = () => {
     return (
         <View style={GlobalContainerStyles.wrapperFlexWithPaddingToHeader}>
             <View pointerEvents="none" style={styles.topDesign}>
-                <TopDesign width={screenWidth} />
+                <TopDesign width={screenWidth} height={screenHeight * 0.14} preserveAspectRatio="none" />
             </View>
             <View pointerEvents="none" style={styles.bottomDesign}>
-                <BottomDesign width={screenWidth} />
+                <BottomDesign width={screenWidth} height={screenHeight * 0.19} preserveAspectRatio="none" />
             </View>
             <KeyboardAvoidingComponent>
             <View style={{alignItems:'center', marginTop:10,paddingBottom:NATIVE_SAFE_AREA_INSETS.getPaddingBottom(insets)}}>
@@ -70,7 +70,9 @@ export const SignUpScreen = () => {
                     <Input label="" keyboardType="email-address" autoCapitalize="none" placeholder="Email" value={email} onChangeText={setEmail} borderOutlineColor="transparent" paddingBottom={0} borderBottomWidth={1} borderBottomColor={Colors.primary100} icon={<HugeiconsIcon icon={Mail02Icon} size={16} strokeWidth={1.5} color={Colors.primaryInputPlaceholder}/>} />
                     <Input label="" keyboardType="default" autoCapitalize="none" placeholder="Password" value={password} onChangeText={setPassword} enableEye={true} borderOutlineColor="transparent" paddingBottom={0} borderBottomWidth={1} borderBottomColor={Colors.primary100}  />
                     <View style={{height:20}}/>
-                    <Button text="Create Account" onPress={handleSignUp} width={buttonWidth}/>
+                    <View style={{width:'100%', alignItems:'center'}}>
+                        <Button text="Create Account" onPress={handleSignUp} width={buttonWidth}/>
+                    </View>
                 </View>
 
 
@@ -89,13 +91,15 @@ export const SignUpScreen = () => {
 const styles = StyleSheet.create({
     topDesign: {
         position: 'absolute',
-        top: 10,
+        top: 0,
         left: 0,
+        right: 0,
     },
     bottomDesign: {
         position: 'absolute',
-        bottom: 80,
+        bottom: 0,
         left: 0,
+        right: 0,
     },
     inputContainer: {
         width: '98%',

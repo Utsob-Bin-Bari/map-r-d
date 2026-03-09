@@ -19,7 +19,7 @@ export const VerifyPhoneScreen = () => {
   const router = useRouter();
   const { theme } = useTheme();
   const GlobalContainerStyles = useGlobalContainerStyles(theme);
-  const screenWidth = Dimensions.get("window").width;
+  const { width: screenWidth, height: screenHeight } = Dimensions.get("window");
   const buttonWidth = screenWidth * 0.9;
   const [otp, setOtp] = useState("");
   const phoneNumber = "+91 9876543210";
@@ -38,7 +38,7 @@ export const VerifyPhoneScreen = () => {
   return (
     <View style={GlobalContainerStyles.wrapperFlexWithPaddingToHeader}>
       <View pointerEvents="none" style={styles.topDesign}>
-        <TopDesign width={screenWidth} />
+        <TopDesign width={screenWidth} height={screenHeight * 0.14} preserveAspectRatio="none" />
       </View>
       <KeyboardAvoidingComponent>
       <View style={{ flex:1, alignItems: "center", justifyContent: "space-between", paddingBottom: NATIVE_SAFE_AREA_INSETS.getPaddingBottom(insets) }}>
@@ -62,7 +62,7 @@ export const VerifyPhoneScreen = () => {
       </View>
       </KeyboardAvoidingComponent>
       <View pointerEvents="none" style={styles.bottomDesign}>
-        <BottomDesign width={screenWidth} />
+        <BottomDesign width={screenWidth} height={screenHeight * 0.19} preserveAspectRatio="none" />
       </View>
     </View>
   );
@@ -73,11 +73,13 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     left: 0,
+    right: 0,
   },
   bottomDesign: {
     position: "absolute",
-    bottom: 80,
+    bottom: 0,
     left: 0,
+    right: 0,
   },
 });
 

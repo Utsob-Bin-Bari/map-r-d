@@ -19,3 +19,5 @@ export const NATIVE_SAFE_AREA_INSETS = {
 export const KEYBOARD_AVOIDING_VIEW = {
     keyboardVerticalOffset: 38,
 };
+
+export const PLATFORM_PERCENTAGE = .15;

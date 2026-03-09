@@ -35,8 +35,15 @@ export const NewPasswordScreen = () => {
             <Input label="" keyboardType="default" autoCapitalize="none" placeholder="Enter new password" enableEye={true} value={newPassword} onChangeText={setNewPassword} borderOutlineColor="transparent" paddingBottom={0} borderBottomWidth={1} borderBottomColor={Colors.primary100}/>
             <Input label="" keyboardType="default" autoCapitalize="none" placeholder="Confirm new password" enableEye={true} value={confirmPassword} onChangeText={setConfirmPassword} borderOutlineColor="transparent" paddingBottom={0} borderBottomWidth={1} borderBottomColor={Colors.primary100}/>
             <View style={styles.passwordRequirementsContainer}>
-              <Text textThemeName="captionLight" style={{ color: Colors.primaryInputText }}><Text textThemeName="captionBold" style={{ color: Colors.primaryInputText }}>·</Text> Must be 8+ characters</Text>
-              <Text textThemeName="captionLight" style={{ color: Colors.primaryInputText }}><Text textThemeName="captionBold" style={{ color: Colors.primaryInputText }}>·</Text> Include a number and uppercase letter</Text>
+              <View style={styles.dotContainer}>
+                <View style={styles.dot} />
+                <Text textThemeName="captionLight" style={{ color: Colors.primaryInputText }}>Must be 8+ characters</Text>
+              </View>
+              <View style={styles.dotContainer}>
+                <View style={styles.dot} />
+              <Text textThemeName="captionLight" style={{ color: Colors.primaryInputText }}>Include a number and uppercase letter</Text>
+
+              </View>
             </View>
           </View>
         </View>
@@ -73,5 +80,16 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary100,
     borderRadius:8,
     marginTop: 10,
+  },
+  dotContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  dot: {
+    width: 3,
+    height: 3,
+    borderRadius: 1.5,
+    backgroundColor: Colors.primaryInputText,
   },
 });

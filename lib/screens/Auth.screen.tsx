@@ -14,7 +14,7 @@ export const AuthScreen = () => {
     const router = useRouter();
     const { theme } = useTheme();
     const GlobalContainerStyles = useGlobalContainerStyles(theme);
-    const screenWidth = Dimensions.get('window').width;
+    const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
     const buttonWidth = screenWidth * 0.9;
 
     const handleSignIn = () => {
@@ -32,10 +32,10 @@ export const AuthScreen = () => {
     return (
         <View style={[GlobalContainerStyles.wrapperFlexWithPaddingToHeader, {justifyContent:'center'}]}>
             <View pointerEvents="none" style={styles.topDesign}>
-                <TopDesign width={screenWidth} />
+                <TopDesign width={screenWidth} height={screenHeight * 0.14} preserveAspectRatio="none" />
             </View>
             <View style={{...GlobalContainerStyles.wrapper, alignItems:'center'}}>
-                <Image source={LogoImage} style={{ width: 170, height: 58 }} />
+                <Image source={LogoImage} style={{ width: 170, height:58 }} />
                 <Text textThemeName="h3Cormorant" style={{color:Colors.primary900, marginTop:20, textAlign:'center'}}>Welcome to CONECTED</Text>
                 <View style={{width:'100%',gap:20,marginTop:80,paddingBottom:100}}>
                     <Button text="Sign in" onPress={handleSignIn} buttonBackgroundColor={'transparent'} width={buttonWidth} />
@@ -49,7 +49,7 @@ export const AuthScreen = () => {
                 </View>
             </View>
             <View pointerEvents="none" style={styles.bottomDesign}>
-                <BottomDesign width={screenWidth} />
+                <BottomDesign width={screenWidth} height={screenHeight * 0.19} preserveAspectRatio="none" />
             </View>
         </View>
     );
@@ -60,11 +60,13 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 0,
         left: 0,
+        right: 0,
     },
     bottomDesign: {
         position: 'absolute',
-        bottom: 80,
+        bottom: 0,
         left: 0,
+        right: 0,
     },
 })
 

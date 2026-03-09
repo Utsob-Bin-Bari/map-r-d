@@ -3,13 +3,13 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { Text } from "./text.ui";
 
 type StatusProps = {
-    status: 'In Progress'  | 'Confirmed' | 'Completed';
+    status: 'In Progress'  | 'Confirmed' | 'Completed' | 'Paid' | 'Pending';
 }
 
 const Status = ({ status }: StatusProps) => {
     const { theme } = useTheme();
-    const backgroundColor = status === 'In Progress' ? theme.colors.inProgressStatusBackground : status === 'Confirmed' ? theme.colors.confirmedStatusBackground : theme.colors.completedStatusBackground;
-    const borderColor = status === 'In Progress' ? theme.colors.inProgressStatusBorder : status === 'Confirmed' ? theme.colors.confirmedStatusBorder : theme.colors.completedStatusBorder;
+const backgroundColor = status === 'In Progress'|| status === 'Pending' ? theme.colors.inProgressStatusBackground : status === 'Confirmed'|| status === 'Paid' ? theme.colors.confirmedStatusBackground : theme.colors.completedStatusBackground;
+    const borderColor = status === 'In Progress'|| status === 'Pending' ? theme.colors.inProgressStatusBorder : status === 'Confirmed'|| status === 'Paid' ? theme.colors.confirmedStatusBorder : theme.colors.completedStatusBorder;
     return(
         <View style={[styles.container, { backgroundColor, borderColor }]}>
             <Text textThemeName="captionMedium" style={{color: borderColor}}>{status}</Text>
