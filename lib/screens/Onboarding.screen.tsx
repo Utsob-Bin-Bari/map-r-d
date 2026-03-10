@@ -33,15 +33,15 @@ export const OnboardingScreen = () => {
   const renderContent = () => {
     switch (activeStep) {
       case 1:
-        return <ProfessionalBackground onNext={handleNextStep} />;
+        return <ProfessionalBackground/>;
       case 2:
-        return <OfferedService onNext={handleNextStep} />;
+        return <OfferedService />;
       case 3:
-        return <LocationSelection onNext={handleNextStep} />;
+        return <LocationSelection  />;
       case 4:
-        return <ProfileBio onNext={handleNextStep} />;
+        return <ProfileBio />;
       case 5:
-        return <DocumentVerification onNext={handleNextStep} />;
+        return <DocumentVerification />;
       default:
         return null;
     }

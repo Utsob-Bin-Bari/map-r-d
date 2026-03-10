@@ -3,17 +3,13 @@ import { Text } from "../ui/text.ui";
 import { Colors } from "../styles/colors.style";
 import { useState } from "react";
 
-type OfferedServiceProps = {
-  onNext: () => void;
-};
-
 const SERVICES = [
   "Massage",
   "Physiotherapy",
   "Acupuncture"
 ];
 
-export const OfferedService = ({ onNext }: OfferedServiceProps) => {
+export const OfferedService = () => {
   const [selected, setSelected] = useState<string[]>([]);
 
   const toggleService = (service: string) => {
@@ -27,7 +23,7 @@ export const OfferedService = ({ onNext }: OfferedServiceProps) => {
   return (
     <View style={styles.container}>
       <Text textThemeName="h5Cormorant" style={{ color: Colors.primary900, marginBottom: 20 }}>
-        Services You Offer
+        What Services DOoYou Offer?
       </Text>
       <View style={styles.servicesGrid}>
         {SERVICES.map((service) => {
@@ -76,9 +72,5 @@ const styles = StyleSheet.create({
   serviceChipSelected: {
     backgroundColor: Colors.primary500,
     borderColor: Colors.primary500,
-  },
-  buttonContainer: {
-    alignItems: "center",
-    marginTop: 20,
   },
 });
