@@ -24,7 +24,7 @@ export const VerifyPhoneScreen = () => {
   const [otp, setOtp] = useState("");
   const phoneNumber = "+91 9876543210";
   const handleVerify = () => {
-    router.replace("/(app)/map");
+    router.replace("/(app)/onboarding");
   };
 
   const handleResend = () => {

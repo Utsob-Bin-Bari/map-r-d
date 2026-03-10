@@ -31,7 +31,11 @@ export const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleSignIn = () => {
-    router.replace("/(app)/map");
+    if (activeTab === 1) {
+      router.replace("/(app)/onboarding");
+    } else {
+      router.replace("/(app)/map");
+    }
   };
 
   const handleForgotPassword = () => {
@@ -73,8 +77,8 @@ export const LoginScreen = () => {
             <View style={styles.divider}/>
           </View>
           <View style={styles.socialLoginContainer}>
-            <Button text="Google" height={40} onPress={() => {}} buttonBackgroundColor="transparent" width={socialButtonWidth} icon={<HugeiconsIcon icon={GoogleIcon} size={20} strokeWidth={2} color={Colors.primary500}/>}/>
-            <Button text="Apple" height={40} onPress={() => {}} buttonBackgroundColor="transparent" width={socialButtonWidth} icon={<HugeiconsIcon icon={AppleIcon} size={20} strokeWidth={1.5} color={Colors.primary500} fill={Colors.primary500}/>}/>
+            <Button text="Google" height={40} onPress={() => {}} buttonBackgroundColor="transparent" width={socialButtonWidth} borderRadius={8} icon={<HugeiconsIcon icon={GoogleIcon} size={20} strokeWidth={2} color={Colors.primary500}/>}/>
+            <Button text="Apple" height={40} onPress={() => {}} buttonBackgroundColor="transparent" width={socialButtonWidth} borderRadius={8} icon={<HugeiconsIcon icon={AppleIcon} size={20} strokeWidth={1.5} color={Colors.primary500} fill={Colors.primary500}/>}/>
           </View>
         </View>
         <View style={{flexDirection: "row",gap: 5,alignItems: "center", marginTop: 30}}>

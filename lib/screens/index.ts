@@ -8,3 +8,4 @@ export * from './ResetLinkSent.screen';
 export * from './NewPassword.screen';
 export * from './ResetConfirmation.screen';
 export * from './VerifyPhone.screen';
+export * from './Onboarding.screen';

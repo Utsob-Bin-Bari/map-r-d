@@ -31,7 +31,7 @@ type InputProps = {
     borderBottomColor?: string;
 } & TextInputProps;
 
-export const Input: React.FC<InputProps> = ({ label, placeholder, value, onChangeText, required = false, supportingText = "", error = "", enableEye = false, height = 56, inputBackgroundColor = null, borderOutlineColor = null,icon = null, onIconPress = () => {}, maxLength = 60, borderRadius = null, iconPosition = "right", paddingBottom = 15, borderBottomWidth = 0, borderBottomColor = null, ...props }) => {
+export const Input: React.FC<InputProps> = ({ label, placeholder, value, onChangeText, required = false, supportingText = "", error = "", enableEye = false, height = 56, inputBackgroundColor = null, borderOutlineColor = null,icon = null, onIconPress = () => {}, maxLength = 200, borderRadius = null, iconPosition = "right", paddingBottom = 15, borderBottomWidth = 0, borderBottomColor = null, ...props }) => {
     const [hasEye, setHasEye] = useState<boolean>(true);
     const borderBottomWidthValue = borderBottomWidth ? borderBottomWidth : 0;
     const borderBottomColorValue = borderBottomColor ? borderBottomColor : Colors.primary100;
